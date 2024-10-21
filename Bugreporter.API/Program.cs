@@ -1,3 +1,4 @@
+using Bugreporter.API.Features.ReportBug.GitHub;
 using Bugreporter.API.Functions;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
     .ConfigureServices(services =>
     {
+        services.AddSingleton<CreateGitHubIssueCommand>();
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
     })

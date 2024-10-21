@@ -1,4 +1,6 @@
 using System.Text.Json;
+using Bugreporter.API.Features.ReportBug;
+using Bugreporter.API.Features.ReportBug.GitHub;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Extensions;
@@ -9,11 +11,16 @@ namespace Bugreporter.API.Functions
 {
     public class ReportBugFunction
     {
+        private CreateGitHubIssueCommand _createGitHubIssueCommand;
         private readonly ILogger<ReportBugFunction> _logger;
 
-        public ReportBugFunction(ILogger<ReportBugFunction> logger)
+        public ReportBugFunction(
+            ILogger<ReportBugFunction> logger,
+            CreateGitHubIssueCommand createGitHubIssueCommand
+        )
         {
             _logger = logger;
+            _createGitHubIssueCommand = createGitHubIssueCommand;
         }
 
         [Function("ReportBugFunction")]
@@ -23,22 +30,16 @@ namespace Bugreporter.API.Functions
         {
             try
             {
-                // _helloWorld.Run();
-                //     _logger.LogInformation("C# HTTP trigger function processed a request.");
-                //     string? name = req.Query["name"];
-                //     string? requstBody = await new StreamReader(req.Body).ReadToEndAsync();
-                //     JsonElement data = JsonSerializer.Deserialize<JsonElement>(requstBody);
+                NewBug newBug = new NewBug(
+                    "Very bad bug",
+                    "The div on the home screen is not centered."
+                );
 
-                //     if (data.TryGetProperty("name", out JsonElement nameElement))
-                //     {
-                //         name = nameElement.GetString();
-                //     }
-                //     else
-                //     {
-                //         throw new InvalidOperationException("name property not found");
-                //     }
+                // We await a reported bug back from GitHub
+                // To do so, we need to pass the newBug into the Execute function
+                ReportedBug reportedBug = await _createGitHubIssueCommand.Execute(newBug);
 
-                return new OkObjectResult($"");
+                return new OkObjectResult(reportedBug);
             }
             catch (InvalidOperationException ex)
             {
