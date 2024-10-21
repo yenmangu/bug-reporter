@@ -5,15 +5,19 @@ using Microsoft.Azure.Functions.Extensions;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace Bugreporter.API
+namespace Bugreporter.API.Functions
 {
     public class Function1
     {
         private readonly ILogger<Function1> _logger;
+        private readonly HelloWorld _helloWorld;
 
-        public Function1(ILogger<Function1> logger)
+        public Function1(HelloWorld helloWorld, ILogger<Function1> logger)
         {
             _logger = logger;
+            _helloWorld = helloWorld;
+            _logger.LogInformation("Function1 instantiated with _logger.");
+            _logger.LogInformation("Function1 instantiated with HelloWorld.");
         }
 
         [Function("Function1")]
@@ -21,6 +25,7 @@ namespace Bugreporter.API
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req
         )
         {
+            _helloWorld.Run();
             try
             {
                 _logger.LogInformation("C# HTTP trigger function processed a request.");

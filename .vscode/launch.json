@@ -5,7 +5,10 @@
 			"name": "Attach to .NET Functions",
 			"type": "coreclr",
 			"request": "attach",
-			"processId": "${command:azureFunctions.pickProcess}"
+			"processId": "${command:azureFunctions.pickProcess}",
+			// "program": "${workspaceFolder}/Bugreporter.API/bin/Debug/net8.0/Bugreporter.API.dll",
+			"targetArchitecture": "x86_64",
+			"requireExactSource": false
 		}
 	]
 }
