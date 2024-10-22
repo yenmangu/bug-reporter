@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Bugreporter.API.Features.ReportBug;
 using Bugreporter.API.Features.ReportBug.GitHub;
+using Bugreporter.API.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Extensions;
@@ -33,7 +34,11 @@ namespace Bugreporter.API.Functions
             try
             {
                 string? reqBody = await new StreamReader(req.Body).ReadToEndAsync();
-                var reportBugRequest = JsonSerializer.Deserialize<ReportBugRequest>(reqBody);
+
+                var reportBugRequest = JsonSerializer.Deserialize<ReportBugRequest>(
+                    reqBody,
+                    JsonSerializerSettings.Options
+                );
                 NewBug? newBug;
                 if (reportBugRequest != null)
                 {
