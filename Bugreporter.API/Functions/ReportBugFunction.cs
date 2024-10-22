@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Extensions;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
 namespace Bugreporter.API.Functions
@@ -25,25 +26,41 @@ namespace Bugreporter.API.Functions
 
         [Function("ReportBugFunction")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "bugs")] HttpRequest req
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "bugs")] HttpRequestData req
+        // ReportBugRequest req
         )
         {
             try
             {
-                NewBug newBug = new NewBug(
-                    "Very bad bug",
-                    "The div on the home screen is not centered."
-                );
+                string? reqBody = await new StreamReader(req.Body).ReadToEndAsync();
+                var reportBugRequest = JsonSerializer.Deserialize<ReportBugRequest>(reqBody);
+                NewBug? newBug;
+                if (reportBugRequest != null)
+                {
+                    newBug = new NewBug(reportBugRequest.Summary, reportBugRequest.Description);
+                    // newBug = new NewBug(req.Summary, req.Description);
+                }
+                else
+                {
+                    throw new InvalidOperationException("Expecting body");
+                }
 
                 // We await a reported bug back from GitHub
                 // To do so, we need to pass the newBug into the Execute function
                 ReportedBug reportedBug = await _createGitHubIssueCommand.Execute(newBug);
 
-                return new OkObjectResult(reportedBug);
+                return new OkObjectResult(
+                    new ReportBugResponse()
+                    {
+                        Id = reportedBug.Id,
+                        summary = reportedBug.Summary,
+                        description = reportedBug.Description
+                    }
+                );
             }
             catch (InvalidOperationException ex)
             {
-                string message = "Required property 'name' not found";
+                string message = "Body not found??";
                 _logger.LogError(ex, message);
                 return new BadRequestObjectResult(message);
             }
