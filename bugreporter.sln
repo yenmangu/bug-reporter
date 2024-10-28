@@ -5,18 +5,36 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bugreporter.API", "Bugreporter.API\Bugreporter.API.csproj", "{C2673E2C-7D04-4E75-877D-613E62D2D256}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseAuthenticationWrapper", "FirebaseAuthenticationWrapper\FirebaseAuthenticationWrapper.csproj", "{86172100-D0F1-48D8-9A3C-6F3F7D3972D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseAuthenticationWrapper.Tests", "FirebaseAuthenticationWrapper.Tests\FirebaseAuthenticationWrapper.Tests.csproj", "{533E80DA-3388-4747-A0E2-33B8D044F89A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseAuthenticationWrapper.Common", "FirebaseAuthenticationWrapper.Common\FirebaseAuthenticationWrapper.Common.csproj", "{EB78193E-4DEE-4100-AB70-258CBFDB282D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C2673E2C-7D04-4E75-877D-613E62D2D256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2673E2C-7D04-4E75-877D-613E62D2D256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2673E2C-7D04-4E75-877D-613E62D2D256}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2673E2C-7D04-4E75-877D-613E62D2D256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86172100-D0F1-48D8-9A3C-6F3F7D3972D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86172100-D0F1-48D8-9A3C-6F3F7D3972D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86172100-D0F1-48D8-9A3C-6F3F7D3972D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86172100-D0F1-48D8-9A3C-6F3F7D3972D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533E80DA-3388-4747-A0E2-33B8D044F89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533E80DA-3388-4747-A0E2-33B8D044F89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533E80DA-3388-4747-A0E2-33B8D044F89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533E80DA-3388-4747-A0E2-33B8D044F89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
