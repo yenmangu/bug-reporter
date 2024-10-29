@@ -2,6 +2,7 @@ using System.Text.Json;
 using Bugreporter.API.Features.ReportBug;
 using Bugreporter.API.Features.ReportBug.GitHub;
 using Bugreporter.API.Helpers;
+using FirebaseAuthenticationWrapper.Models;
 using FirebaseAuthenticationWrapper.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -50,6 +51,14 @@ namespace Bugreporter.API.Functions
                 if (!authenticationResult.Succeeded)
                 {
                     return new UnauthorizedResult();
+                }
+
+                string userId;
+                var claimId = authenticationResult.Principal.FindFirst(UserClaimType.ID);
+                if (claimId != null)
+                {
+                    userId = claimId.Value;
+                    _logger.LogInformation("Authenticated User {userId}", userId);
                 }
 
                 var reportBugRequest = JsonSerializer.Deserialize<ReportBugRequest>(

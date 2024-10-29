@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseAuthenticationWrapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseAuthenticationWrapper.Common", "FirebaseAuthenticationWrapper.Common\FirebaseAuthenticationWrapper.Common.csproj", "{EB78193E-4DEE-4100-AB70-258CBFDB282D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bugreporter.Client", "Bugreporter.Client\Bugreporter.Client.csproj", "{38A3F12F-8115-4056-A213-38A25A4E760F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB78193E-4DEE-4100-AB70-258CBFDB282D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38A3F12F-8115-4056-A213-38A25A4E760F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38A3F12F-8115-4056-A213-38A25A4E760F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38A3F12F-8115-4056-A213-38A25A4E760F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38A3F12F-8115-4056-A213-38A25A4E760F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
