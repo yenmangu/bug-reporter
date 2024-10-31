@@ -3,13 +3,13 @@
     x:Class="Bugreporter.Client.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Bugreporter.Client"
+    xmlns:reportbug="clr-namespace:Bugreporter.Client.Pages.ReportBug"
     Shell.FlyoutBehavior="Disabled"
     Title="Bugreporter.Client">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Report Bug"
+        ContentTemplate="{DataTemplate reportbug:ReportBugView}"
+        Route="reportBug"/>
 
 </Shell>

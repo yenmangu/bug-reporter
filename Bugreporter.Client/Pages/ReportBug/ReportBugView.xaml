@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bugreporter.Client.Pages.ReportBug.ReportBugView"
+             Title="ReportBugView">
+    <VerticalStackLayout>
+        <Label
+            Text="{Binding Value}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Entry Placeholder="Enter a new  value"
+               Text="{Binding Value}"/>
+    </VerticalStackLayout>
+</ContentPage>
