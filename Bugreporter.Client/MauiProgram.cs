@@ -2,6 +2,7 @@
 
 using Bugreporter.Client.Pages.ReportBug;
 using Bugreporter.Client.Pages.SignIn;
+using Bugreporter.Client.Pages.SignUp;
 using Microsoft.Extensions.Logging;
 
 namespace Bugreporter.Client;
@@ -25,6 +26,9 @@ public static class MauiProgram
         builder.Services.AddTransient<SignInViewModel>();
         builder.Services.AddTransient<SignInView>(s => new SignInView(
             s.GetRequiredService<SignInViewModel>()));
+        builder.Services.AddTransient<SignUpViewModel>();
+        builder.Services.AddTransient<SignUpView>(s => new SignUpView(
+            s.GetRequiredService<SignUpViewModel>()));
 #if DEBUG
         builder.Logging.AddDebug();
         // MauiAppBuilder mauiAppBuilder = builder.EnableHotReload();
