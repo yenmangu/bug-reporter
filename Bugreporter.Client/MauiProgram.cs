@@ -1,5 +1,7 @@
 ﻿// using DotNet.Meteor.HotReload.Plugin;
+
 using Bugreporter.Client.Pages.ReportBug;
+using Bugreporter.Client.Pages.SignIn;
 using Microsoft.Extensions.Logging;
 
 namespace Bugreporter.Client;
@@ -20,6 +22,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ReportBugView>(s => new ReportBugView(
             s.GetRequiredService<ReportBugViewModel>()
         ));
+        builder.Services.AddTransient<SignInViewModel>();
+        builder.Services.AddTransient<SignInView>(s => new SignInView(
+            s.GetRequiredService<SignInViewModel>()));
 #if DEBUG
         builder.Logging.AddDebug();
         // MauiAppBuilder mauiAppBuilder = builder.EnableHotReload();

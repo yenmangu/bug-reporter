@@ -9,6 +9,22 @@
 			// "program": "${workspaceFolder}/Bugreporter.API/bin/Debug/net8.0/Bugreporter.API.dll",
 			"targetArchitecture": "x86_64",
 			"requireExactSource": false
+		},
+		{
+			"name": ".NET Core Launch (console)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceFolder}/Bugreporter.Client/bin/Debug/net8.0-maccatalyst/maccatalyst-x64/Bugreporter.Client.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}/Bugreporter.Client",
+			"console": "internalConsole",
+			"stopAtEntry": false
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach"
 		}
 	]
 }
