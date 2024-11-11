@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Shell
-    x:Class="Bugreporter.Client.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:reportbug="clr-namespace:Bugreporter.Client.Pages.ReportBug"
-    xmlns:signin="clr-namespace:Bugreporter.Client.Pages.SignIn"
-    xmlns:signup="clr-namespace:Bugreporter.Client.Pages.SignUp"
-    Shell.FlyoutBehavior="Disabled"
-    Title="Bugreporter.Client">
+<Shell x:Class="Bugreporter.Client.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:reportbug="clr-namespace:Bugreporter.Client.Pages.ReportBug"
+       xmlns:signin="clr-namespace:Bugreporter.Client.Pages.SignIn"
+       xmlns:signup="clr-namespace:Bugreporter.Client.Pages.SignUp"
+       Shell.FlyoutBehavior="Disabled"
+       Shell.NavBarIsVisible="False"
+       Title="Bugreporter.Client">
 
-    <ShellContent
-        Title="Report Bug"
-        ContentTemplate="{DataTemplate reportbug:ReportBugView}"
-        Route="reportBug" />
 
-    <ShellContent
-        Title="Sign In"
-        ContentTemplate="{DataTemplate signin:SignInView}"
-        Route="signIn" />
+    <ShellContent Title="Report Bug"
+                  ContentTemplate="{DataTemplate reportbug:ReportBugView}"
+                  Route="reportBug" />
 
-    <ShellContent
-        Title="Sign Up"
-        ContentTemplate="{DataTemplate signup:SignUpView}" />
+    <ShellContent Title="Sign In"
+                  ContentTemplate="{DataTemplate signin:SignInView}"
+                  Route="signIn" />
+
+    <ShellContent Title="Sign Up"
+                  ContentTemplate="{DataTemplate signup:SignUpView}" />
 
 </Shell>
