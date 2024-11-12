@@ -45,4 +45,9 @@ public class ReportBugFormViewModel : ViewModelBase
     }
 
     public ICommand ReportBugCommand { get; }
+
+    public ReportBugFormViewModel()
+    {
+        ReportBugCommand = new ReportBugCommand(this);
+    }
 }
