@@ -10,7 +10,8 @@
                              MaximumWidthRequest="1000">
             <Label FontSize="Large"
                    Text="Report a Bug" />
-            <reportBug:ReportBugFormView Margin="0,25,0,0" />
+            <reportBug:ReportBugFormView Margin="0,25,0,0"
+                                         BindingContext="{Binding ReportBugFormViewModel}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿// using DotNet.Meteor.HotReload.Plugin;
 
+using Bugreporter.Client.Features.ReportBug;
 using Bugreporter.Client.Pages.ReportBug;
 using Bugreporter.Client.Pages.SignIn;
 using Bugreporter.Client.Pages.SignUp;
@@ -14,21 +15,32 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+            .ConfigureFonts(
+                fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                }
+            );
         builder.Services.AddTransient<ReportBugViewModel>();
-        builder.Services.AddTransient<ReportBugView>(s => new ReportBugView(
-            s.GetRequiredService<ReportBugViewModel>()
-        ));
+        builder.Services.AddTransient<ReportBugFormViewModel>();
+        builder.Services.AddTransient<ReportBugView>(
+            s => new ReportBugView(
+                s.GetRequiredService<ReportBugViewModel>()
+            )
+        );
         builder.Services.AddTransient<SignInViewModel>();
-        builder.Services.AddTransient<SignInView>(s => new SignInView(
-            s.GetRequiredService<SignInViewModel>()));
+        builder.Services.AddTransient<SignInView>(
+            s => new SignInView(
+                s.GetRequiredService<SignInViewModel>()
+            )
+        );
         builder.Services.AddTransient<SignUpViewModel>();
-        builder.Services.AddTransient<SignUpView>(s => new SignUpView(
-            s.GetRequiredService<SignUpViewModel>()));
+        builder.Services.AddTransient<SignUpView>(
+            s => new SignUpView(
+                s.GetRequiredService<SignUpViewModel>()
+            )
+        );
 #if DEBUG
         builder.Logging.AddDebug();
         // MauiAppBuilder mauiAppBuilder = builder.EnableHotReload();
