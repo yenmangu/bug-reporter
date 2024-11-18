@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Bugreporter.Client.Shared.Commands;

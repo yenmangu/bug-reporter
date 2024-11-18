@@ -1,10 +1,16 @@
 ﻿// using DotNet.Meteor.HotReload.Plugin;
 
+using System;
 using Bugreporter.Client.Features.ReportBug;
+using Bugreporter.Client.Features.ReportBug.API;
 using Bugreporter.Client.Pages.ReportBug;
 using Bugreporter.Client.Pages.SignIn;
 using Bugreporter.Client.Pages.SignUp;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
+using Refit;
 
 namespace Bugreporter.Client;
 
@@ -12,7 +18,7 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-        var builder = MauiApp.CreateBuilder();
+        MauiAppBuilder builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
             .ConfigureFonts(
@@ -21,6 +27,10 @@ public static class MauiProgram
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 }
+            );
+        builder.Services.AddRefitClient<IReportBugApiCommand>()
+            .ConfigureHttpClient(
+                c => c.BaseAddress = new Uri("http://localhost:7071/api")
             );
         builder.Services.AddTransient<ReportBugViewModel>();
         builder.Services.AddTransient<ReportBugFormViewModel>();

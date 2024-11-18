@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using Bugreporter.Client.Features.ReportBug.API;
 using Bugreporter.Client.Shared;
 
 namespace Bugreporter.Client.Features.ReportBug;
@@ -46,8 +47,8 @@ public class ReportBugFormViewModel : ViewModelBase
 
     public ICommand ReportBugCommand { get; }
 
-    public ReportBugFormViewModel()
+    public ReportBugFormViewModel(IReportBugApiCommand? reportBugApiCommand)
     {
-        ReportBugCommand = new ReportBugCommand(this);
+        ReportBugCommand = new ReportBugCommand(this, reportBugApiCommand);
     }
 }
