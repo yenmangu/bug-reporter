@@ -1,15 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml
+    version="1.0"
+    encoding="utf-8" ?>
 
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Bugreporter.Client.Pages.SignIn.SignInView">
+    x:Class="Bugreporter.Client.Pages.SignIn.SignInView"
+    x:DataType="signin:SignInViewModel"
+    xmlns:signinfeature="clr-namespace:Bugreporter.Client.Features.SignIn"
+    xmlns:signin="clr-namespace:Bugreporter.Client.Pages.SignIn">
     <ContentPage.Content>
-        <VerticalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="SignIn View"
-                VerticalOptions="Center" />
-        </VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="25"
+                MaximumWidthRequest="800">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="SignIn View"
+                    VerticalOptions="Center" />
+                <signinfeature:SignInFormView
+                    Margin="0,25,0,0"
+                    BindingContext="{Binding SignInFormViewModel}" />
+            </VerticalStackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -1,11 +1,15 @@
 ﻿// using DotNet.Meteor.HotReload.Plugin;
 
 using System;
+using Bugreporter.Client.Features;
 using Bugreporter.Client.Features.ReportBug;
 using Bugreporter.Client.Features.ReportBug.API;
+using Bugreporter.Client.Features.SignIn;
 using Bugreporter.Client.Pages.ReportBug;
 using Bugreporter.Client.Pages.SignIn;
 using Bugreporter.Client.Pages.SignUp;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
@@ -28,6 +32,7 @@ public static class MauiProgram
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 }
             );
+
         builder.Services.AddRefitClient<IReportBugApiCommand>()
             .ConfigureHttpClient(
                 c => c.BaseAddress = new Uri("http://localhost:7071/api")
@@ -39,16 +44,31 @@ public static class MauiProgram
                 s.GetRequiredService<ReportBugViewModel>()
             )
         );
+        builder.Services.AddTransient<SignInFormViewModel>();
         builder.Services.AddTransient<SignInViewModel>();
         builder.Services.AddTransient<SignInView>(
             s => new SignInView(
                 s.GetRequiredService<SignInViewModel>()
             )
         );
+        builder.Services.AddTransient<SignUpFormViewModel>();
         builder.Services.AddTransient<SignUpViewModel>();
         builder.Services.AddTransient<SignUpView>(
             s => new SignUpView(
                 s.GetRequiredService<SignUpViewModel>()
+            )
+        );
+        builder.Services.AddSingleton(
+            new FirebaseAuthClient(
+                new FirebaseAuthConfig()
+                {
+                    ApiKey = "AIzaSyBlp-AeWG3N5Z92v4OcIzp5W-SAGeHbqP8",
+                    AuthDomain = "bug-reporter-35752.firebaseapp.com",
+                    Providers = new FirebaseAuthProvider[]
+                    {
+                        new EmailProvider()
+                    }
+                }
             )
         );
 #if DEBUG
