@@ -8,7 +8,8 @@
     x:Class="Bugreporter.Client.Pages.SignUp.SignUpView"
     x:DataType="signup:SignUpViewModel"
     xmlns:signupfeature="clr-namespace:Bugreporter.Client.Features.SignUp"
-    xmlns:signup="clr-namespace:Bugreporter.Client.Pages.SignUp">
+    xmlns:signup="clr-namespace:Bugreporter.Client.Pages.SignUp"
+    xmlns:link="clr-namespace:Bugreporter.Client.Shared.Link">
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout
@@ -22,6 +23,9 @@
                 <signupfeature:SignUpFormView
                     Margin="0,25,0,0"
                     BindingContext="{Binding SignUpFormViewModel}" />
+                <link:Link
+                    Text="Already have an account? Sign in"
+                    Route="//SignIn" />
             </VerticalStackLayout>
         </ScrollView>
 

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text.Json;
 using Bugreporter.API.Features.ReportBug;
 using Bugreporter.API.Features.ReportBug.GitHub;
@@ -46,21 +47,21 @@ public class ReportBugFunction
                 await new StreamReader(httpRequest.Body).ReadToEndAsync();
 
             // Authenticate
-            // AuthenticateResult authenticationResult =
-            //     await _authenticationHandler.HandleAuthenticateAsync(httpRequest);
-            //
-            // if (!authenticationResult.Succeeded)
-            // {
-            //     return new UnauthorizedResult();
-            // }
-            //
-            // string userId;
-            // var claimId = authenticationResult.Principal.FindFirst(UserClaimType.ID);
-            // if (claimId != null)
-            // {
-            //     userId = claimId.Value;
-            //     _logger.LogInformation("Authenticated User {userId}", userId);
-            // }
+            AuthenticateResult authenticationResult =
+                await _authenticationHandler.HandleAuthenticateAsync(httpRequest);
+
+            if (!authenticationResult.Succeeded)
+            {
+                return new UnauthorizedResult();
+            }
+
+            string userId;
+            Claim? claimId = authenticationResult.Principal.FindFirst(UserClaimType.ID);
+            if (claimId != null)
+            {
+                userId = claimId.Value;
+                _logger.LogInformation("Authenticated User {userId}", userId);
+            }
 
             Core.Features.ReportBug.ReportBugRequest? reportBugRequest =
                 JsonSerializer
@@ -89,9 +90,9 @@ public class ReportBugFunction
             return new OkObjectResult(
                 new Core.Features.ReportBug.ReportBugResponse()
                 {
-                    Id = reportedBug.Id
-                    , Summary = reportedBug.Summary
-                    , Description = reportedBug.Description
+                    Id = reportedBug.Id,
+                    Summary = reportedBug.Summary,
+                    Description = reportedBug.Description
                 }
             );
         }
