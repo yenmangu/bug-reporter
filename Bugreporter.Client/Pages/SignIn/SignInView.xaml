@@ -16,7 +16,6 @@
                 MaximumWidthRequest="800">
                 <Label
                     HorizontalOptions="Center"
-                    Text="SignIn View"
                     VerticalOptions="Center" />
                 <signinfeature:SignInFormView
                     Margin="0,25,0,0"

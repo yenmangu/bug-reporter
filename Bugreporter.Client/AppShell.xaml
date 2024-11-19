@@ -14,19 +14,18 @@
     Title="Bugreporter.Client">
 
     <ShellContent
-        Title="Sign In"
-        ContentTemplate="{DataTemplate signin:SignInView}"
-        Route="signIn" />
-
-    <ShellContent
         Title="Sign Up"
         ContentTemplate="{DataTemplate signup:SignUpView}"
-        Route="signUp" />
+        Route="SignUp" />
+
+    <ShellContent
+        Title="Sign In"
+        ContentTemplate="{DataTemplate signin:SignInView}"
+        Route="SignIn" />
 
     <ShellContent
         Title="Report Bug"
         ContentTemplate="{DataTemplate reportbug:ReportBugView}"
-        Route="reportBug" />
-
+        Route="ReportBug" />
 
 </Shell>

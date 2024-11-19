@@ -29,6 +29,7 @@ public class SignUpCommand : AsyncCommandBase
                 _viewModel.Email, _viewModel.Password
             );
             await Application.Current.MainPage.DisplayAlert("Success", "User Created", "OK");
+            await Shell.Current.GoToAsync("//SignIn");
         }
         catch (Exception e)
         {

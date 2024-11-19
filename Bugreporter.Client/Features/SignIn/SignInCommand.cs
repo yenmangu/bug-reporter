@@ -18,12 +18,14 @@ public class SignInCommand : AsyncCommandBase
     {
         try
         {
-          var x =  await _authClient.SignInWithEmailAndPasswordAsync(
+            UserCredential? x = await _authClient.SignInWithEmailAndPasswordAsync(
                 _viewModel.Email, _viewModel.Password
             );
             await Application.Current.MainPage.DisplayAlert(
                 "Success!", "You have been logged in.", "OK"
             );
+
+            await Shell.Current.GoToAsync("//ReportBug");
         }
         catch (Exception e)
         {
