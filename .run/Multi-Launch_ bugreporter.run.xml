@@ -22,7 +22,7 @@
         </option>
         <option name="executable">
           <ExecutableSnapshot>
-            <option name="id" value="runConfig:macOS.mac OS" />
+            <option name="id" value="runConfig:macOS.macOS Bugreporter.Client" />
           </ExecutableSnapshot>
         </option>
       </ExecutableRowSnapshot>
