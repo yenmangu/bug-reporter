@@ -1,6 +1,7 @@
 ﻿// using DotNet.Meteor.HotReload.Plugin;
 
 using System;
+using Bugreporter.Client.Entities.Users;
 using Bugreporter.Client.Features;
 using Bugreporter.Client.Features.ReportBug;
 using Bugreporter.Client.Features.ReportBug.API;
@@ -71,6 +72,7 @@ public static class MauiProgram
                 }
             )
         );
+        builder.Services.AddSingleton<CurrentUserStore>();
 #if DEBUG
         builder.Logging.AddDebug();
         // MauiAppBuilder mauiAppBuilder = builder.EnableHotReload();

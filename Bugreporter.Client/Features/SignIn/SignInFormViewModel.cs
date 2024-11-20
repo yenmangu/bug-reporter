@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using Bugreporter.Client.Entities.Users;
 using Bugreporter.Client.Shared;
 using Firebase.Auth;
 
@@ -32,8 +33,8 @@ public class SignInFormViewModel : ViewModelBase
 
     public ICommand SignInCommand { get; }
 
-    public SignInFormViewModel(FirebaseAuthClient authClient)
+    public SignInFormViewModel(FirebaseAuthClient authClient, CurrentUserStore currentUserStore)
     {
-        SignInCommand = new SignInCommand(this, authClient);
+        SignInCommand = new SignInCommand(this, authClient, currentUserStore);
     }
 }
